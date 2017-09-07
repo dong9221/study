@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dong.mybatis.mapping.DeptMapping">
+    <resultMap type="dong.mybatis.domain.Dept" id="deptmapper">
+    	<id column="id" property="id"/>
+    	<result column="num" property="num"/>
+    	<result column="pid" property="pid"/>
+    	<result column="fullname" property="fullname"/>
+    </resultMap>
+    <select id="getDepts" parameterType="int" 
+        resultMap="deptmapper">
+        select * from dept where 1=1
+        <if test="_parameter!=0">
+        	and id=#{_parameter}
+        </if>
+    </select>
+</mapper>
